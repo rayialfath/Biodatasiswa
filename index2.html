@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulir Biodata Siswa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .nav-tabs button {
+      padding: 10px 20px;
+      border: none;
+      background: #e5e7eb;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .nav-tabs button.active {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      background: #10b981;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .back-link {
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 15px;
+      color: #374151;
+      background: #d1d5db;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <a href="index.html" class="back-link">&larr; Kembali</a>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" data-target="siswa">Data Siswa</button>
+      <button class="tab-btn" data-target="ortu">Data Orang Tua/Wali</button>
+      <button class="tab-btn" data-target="sekolah">Data Sekolah</button>
+    </div>
+
+    <form>
+      <!-- Data Siswa -->
+      <div id="siswa" class="form-section active">
+        <label>Nama Lengkap:</label>
+        <input type="text" required>
+
+        <label>NISN:</label>
+        <input type="text" required>
+
+        <label>Tempat & Tanggal Lahir:</label>
+        <input type="text">
+
+        <label>Jenis Kelamin:</label>
+        <input type="text">
+
+        <label>Agama:</label>
+        <input type="text">
+
+        <label>Status dalam Keluarga:</label>
+        <input type="text">
+
+        <label>Alamat Rumah:</label>
+        <input type="text">
+
+        <label>Nomor Telepon:</label>
+        <input type="text">
+      </div>
+
+      <!-- Data Orang Tua -->
+      <div id="ortu" class="form-section">
+        <label>Nama Ayah dan Ibu:</label>
+        <input type="text">
+
+        <label>NIK Ayah dan Ibu:</label>
+        <input type="text">
+
+        <label>Tempat & Tanggal Lahir:</label>
+        <input type="text">
+
+        <label>Agama Ayah dan Ibu:</label>
+        <input type="text">
+
+        <label>Pendidikan Terakhir:</label>
+        <input type="text">
+
+        <label>Pekerjaan:</label>
+        <input type="text">
+
+        <label>Alamat Orang Tua:</label>
+        <input type="text">
+
+        <label>Nomor Telepon:</label>
+        <input type="text">
+
+        <label>Nama dan Info Wali:</label>
+        <input type="text">
+      </div>
+
+      <!-- Data Sekolah -->
+      <div id="sekolah" class="form-section">
+        <label>Nama Sekolah Asal:</label>
+        <input type="text">
+
+        <label>Kelas dan Semester:</label>
+        <input type="text">
+      </div>
+
+      <div class="submit-btn">
+        <button type="submit">Kirim Data</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.form-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const target = btn.getAttribute('data-target');
+        sections.forEach(sec => {
+          sec.classList.remove('active');
+          if (sec.id === target) {
+            sec.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
